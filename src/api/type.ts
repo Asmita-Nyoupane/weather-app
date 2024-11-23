@@ -55,7 +55,7 @@ export type TWeatherData = {
         type: number,
         id: number,
         country: string,
-        sunrise: string,
+        sunrise: number,
         sunset: number
     },
     dt: number,

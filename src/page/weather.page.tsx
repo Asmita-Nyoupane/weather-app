@@ -6,6 +6,9 @@ import { WeatherAlert } from "../components/alert";
 import { useForecast, useReverseGeoCoding, useWeather } from "@/hooks/use-weather";
 import CurrentWeather from "@/components/page-component/current-weather";
 import HourlyTemprature from "@/components/page-component/hourly-temprature";
+import { Skeleton } from "@/components/ui/skeleton";
+import WeatherDetails from "@/components/page-component/weather-detail";
+import ForecastDetails from "@/components/page-component/forecast-details";
 
 
 const WeatherPage = () => {
@@ -35,7 +38,7 @@ const WeatherPage = () => {
         !forecastData ||
         !weatherData
     ) {
-        return <DashboardSkeleton />;
+        return <DashboardSkeleton />
     }
 
     // Handle errors after loading states
@@ -82,10 +85,14 @@ const WeatherPage = () => {
             </div>
 
             {/* current and hourly weather */}
-            <div className="grid gap-6">
+            <div className="grid gap-10">
                 <div className="flex flex-col lg:flex-row gap-10">
                     <CurrentWeather locationName={locationName!} weatherData={weatherData} />
                     <HourlyTemprature forecastData={forecastData} />
+                </div>
+                <div className="flex flex-col lg:flex-row gap-10">
+                    <WeatherDetails weatherData={weatherData} />
+                    <ForecastDetails forecastData={forecastData} />
                 </div>
             </div>
         </div>

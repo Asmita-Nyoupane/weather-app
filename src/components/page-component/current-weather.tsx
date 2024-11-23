@@ -50,9 +50,9 @@ const CurrentWeather = ({ locationName, weatherData }: TProps) => {
                         </div>
                         <div className="grid grid-cols-1 gap-4 md:gap-6  md:grid-cols-2">
 
-                            <div className="flex gap-4 items-center  justify-center">
+                            <div className="flex gap-4 items-center  ">
                                 <Droplets className="size-5 text-blue-500" />
-                                <div className="flex gap-1 flex-col items-start">
+                                <div className="flex  gap-1 flex-col items-start">
                                     <p className="subtitle">
                                         Humidity
                                     </p>

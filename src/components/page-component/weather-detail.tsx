@@ -46,7 +46,7 @@ const WeatherDetails = ({ weatherData }: TProps) => {
 
     ]
     return (
-        <Card className="lg:w-[40%]">
+        <Card className="lg:w-[40%] h-fit">
             <CardHeader>
                 <CardTitle className="title">
                     Weather Details
