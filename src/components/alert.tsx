@@ -1,34 +1,34 @@
-import { AlertCircle, AlertTriangle } from "lucide-react"
-
-import {
-    Alert,
-    AlertDescription,
-    AlertTitle,
-} from "@/components/ui/alert"
-import { Button } from "@/components/ui/button";
 import { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "./ui/card";
+
 type Props = {
-    errorMessage: string | null,
+    errorMessage: string | null;
     title: string;
     icon: ReactNode;
-    enableLocation: () => void,
-    btnMessage: string
+    enableLocation: () => void;
+    btnMessage: string;
+};
 
-}
-
-export function WeatherAlert({ title, errorMessage, icon, enableLocation, btnMessage }: Props) {
+export function WeatherErrorCard({ title, errorMessage, icon, enableLocation, btnMessage }: Props) {
     return (
-        <Alert variant="destructive" className=" px-2 py-4  flex flex-col gap-2 justify-center">
-            <AlertTriangle className="h-4 w-4" />
-            <AlertTitle>{title}</AlertTitle>
-            <AlertDescription className="space-y-3">
-                <p>{errorMessage}</p>
-                <Button onClick={enableLocation} variant="outline" size='icon' className="w-fit px-2">
-                    {btnMessage}
+        <div className=" flex justify-center items-center h-screen">
+
+            <Card className="border  p-6 rounded-md shadow-md flex flex-col    gap-3 max-w-md mx-auto">
+
+                <div className="flex items-center gap-2">
                     {icon}
+                    <h3 className="title">{title}</h3>
+                </div>
+                <p className="">{errorMessage}</p>
+                <Button
+                    onClick={enableLocation}
+                    variant="outline"
+                    className="mt-2 w-fit self-end  bg-green-500 text-white hover:border-green-400 hover:text-primary hover:bg-transparent "
+                >
+                    {btnMessage}
                 </Button>
-            </AlertDescription>
-        </Alert >
-    )
+            </Card>
+        </div>
+    );
 }
-0
