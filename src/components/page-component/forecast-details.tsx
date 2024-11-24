@@ -42,18 +42,18 @@ const ForecastDetails = ({ forecastData }: { forecastData: TForecastData }) => {
             <CardContent>
                 <Table >
                     <TableHeader>
-                        <TableRow className=" text-md md:text-base">
-                            <TableHead>Date
+                        <TableRow className=" text-md md:text-base py-2">
+                            <TableHead className="py-4">Date
                                 <Calendar className="size-4 text-blue-500 mt-2" />
                             </TableHead>
-                            <TableHead className="text-left"><span>Min Temp</span>
+                            <TableHead className=" py-4 text-left"><span>Min Temp</span>
                                 <ArrowUp className="size-4 text-green-500 mt-2" /> </TableHead>
 
-                            <TableHead className=" items-center"><span>Max Temp</span>
+                            <TableHead className="  py-4 items-center"><span>Max Temp</span>
                                 <ArrowDown className="size-4 text-red-500 mt-2" /> </TableHead>
-                            <TableHead className=" items-center"><span>Humidity </span>
+                            <TableHead className=" py-4  items-center"><span>Humidity </span>
                                 <Droplets className="size-5 text-blue-500 mt-2" /> </TableHead>
-                            <TableHead className=" items-center"><span>Wind Speed</span>
+                            <TableHead className=" py-4  items-center"><span>Wind Speed</span>
                                 <Wind className="size-5 text-blue-500 mt-2" /> </TableHead>
                             <TableHead>Condition
                                 <FileSpreadsheet className="size-4 mt-2 text-blue-500" />

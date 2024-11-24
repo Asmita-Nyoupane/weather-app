@@ -1,6 +1,6 @@
 import { TWeatherData } from "@/api/type"
 import { format } from "date-fns";
-import { Compass, Gauge, Sunrise, Sunset, Wind } from "lucide-react";
+import { Compass, Gauge, Sunrise, Sunset } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 type TProps = {

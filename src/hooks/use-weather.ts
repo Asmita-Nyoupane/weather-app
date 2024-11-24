@@ -6,6 +6,7 @@ export const WEATHER_QUERY =
         WEATHER: (coords: TCordinate) => ['weather', coords] as const,
         FOERECAST: (coords: TCordinate) => ['forecast', coords] as const,
         REVERSEGEO: (coords: TCordinate) => ['location', coords] as const,
+        SEARCH: (query: string) => ['location-search', query] as const,
     } as const
 
 
@@ -34,5 +35,13 @@ export function useReverseGeoCoding(coordinates: TCordinate | null) {
         enabled: !!coordinates,
 
     })
+}
+// searchLocation
+export function useSearchLocationQuery(query: string) {
+    return useQuery({
+        queryKey: WEATHER_QUERY.SEARCH(query),
+        queryFn: () => weatherAPI.searchLocation(query),
+        enabled: query.length > 3,
 
+    })
 }
