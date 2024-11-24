@@ -11,6 +11,7 @@ import Layout from './layout';
 import { ThemeProvider } from './components/ui/theme-provider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import WeatherPage from './page/weather.page';
+import CityPage from './page/city.page';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +27,7 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
     <Route index element={<WeatherPage />} />
+    <Route path='/city/:cityName' element={<CityPage />} />
   </Route>))
 
 
