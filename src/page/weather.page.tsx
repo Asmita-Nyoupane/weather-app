@@ -2,13 +2,13 @@ import DashboardSkeleton from "@/components/skeleton";
 import { Button } from "@/components/ui/button"
 import { useGeoLocation } from "@/hooks/use-geolocation"
 import { MapPin, RefreshCcw } from "lucide-react"
-import { WeatherAlert } from "../components/alert";
 import { useForecast, useReverseGeoCoding, useWeather } from "@/hooks/use-weather";
 import CurrentWeather from "@/components/page-component/current-weather";
 import HourlyTemprature from "@/components/page-component/hourly-temprature";
-import { Skeleton } from "@/components/ui/skeleton";
 import WeatherDetails from "@/components/page-component/weather-detail";
 import ForecastDetails from "@/components/page-component/forecast-details";
+import FavoriteCities from "@/components/page-component/favorites-cities";
+import { WeatherErrorCard } from "@/components/alert";
 
 
 const WeatherPage = () => {
@@ -18,7 +18,26 @@ const WeatherPage = () => {
     const { data: weatherData, error: weatherError, isLoading: isweatherLoading, refetch: weatherReftch, isFetching: isWeatherFetching } = useWeather(coordinates);
     const { data: forecastData, error: forecastError, isLoading: isforecastLoading, refetch: forecastReftch, isFetching: isForecastFetching } = useForecast(coordinates);
 
-    const enableLocation = () => { };
+    const enableLocation = () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser.");
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+                // You can call your getLocation function here if needed
+                getLocation();
+            },
+            (error) => {
+                console.error("Error fetching location:", error.message);
+                alert("Please allow location access to use this feature.");
+            }
+        );
+    };
+
 
     const handleRefresh = () => {
         getLocation();
@@ -34,17 +53,17 @@ const WeatherPage = () => {
         isGeoLocationLoading ||
         isLocationLoading ||
         isweatherLoading ||
-        isforecastLoading ||
-        !forecastData ||
-        !weatherData
+        isforecastLoading
+
     ) {
         return <DashboardSkeleton />
     }
 
     // Handle errors after loading states
-    if (forecastError || weatherError) {
+    if (forecastError || weatherError || !forecastData ||
+        !weatherData) {
         return (
-            <WeatherAlert
+            <WeatherErrorCard
                 title="Weather Error"
                 errorMessage={locationError || "Failed to fetch Weather information"}
                 enableLocation={enableLocation}
@@ -56,7 +75,7 @@ const WeatherPage = () => {
 
     if (locationError || !coordinates || reverseError) {
         return (
-            <WeatherAlert
+            <WeatherErrorCard
                 title="Location Error"
                 errorMessage={locationError || "Please enable location to see your local weather"}
                 enableLocation={enableLocation}
@@ -69,8 +88,9 @@ const WeatherPage = () => {
     const locationName = locationData && locationData[0];
 
     return (
-        <div className="space-y-10">
+        <div className="space-y-6">
             {/* fav city */}
+            <FavoriteCities />
             <div className="flex justify-between items-center">
                 <h1 className="header">My Location</h1>
 
@@ -87,7 +107,10 @@ const WeatherPage = () => {
             {/* current and hourly weather */}
             <div className="grid gap-10">
                 <div className="flex flex-col lg:flex-row gap-10">
-                    <CurrentWeather locationName={locationName!} weatherData={weatherData} />
+                    <div className="lg:w-[50%]">
+
+                        <CurrentWeather locationName={locationName!} weatherData={weatherData} />
+                    </div>
                     <HourlyTemprature forecastData={forecastData} />
                 </div>
                 <div className="flex flex-col lg:flex-row gap-10">
