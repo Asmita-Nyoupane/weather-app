@@ -26,8 +26,7 @@ const WeatherPage = () => {
 
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                const { latitude, longitude } = position.coords;
-                console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+                // const { latitude, longitude } = position.coords;
                 // You can call your getLocation function here if needed
                 getLocation();
             },

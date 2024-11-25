@@ -29,7 +29,7 @@ const CitySearch = () => {
     const { favorites } = useFavoriteCity()
     const handleSelect = (cityData: string) => {
         const [lat, lon, name, country] = cityData.split("|")
-        console.log("🚀 ~ handleSelect ~ cityData:", cityData)
+
         // add to search  history
         addToHistory.mutate({
             query,

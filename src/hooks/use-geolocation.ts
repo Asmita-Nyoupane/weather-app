@@ -14,14 +14,12 @@ export function useGeoLocation() {
     })
 
     const getLocation = () => {
-        console.log(" geo location start..............")
         setLoactionData((prev) => ({
             ...prev,
             isLoading: true,
             error: null
         }))
         if (!navigator.geolocation) {
-            console.log(" geo location not supported")
             setLoactionData({
                 coordinates: null,
                 error: "GeoLoation is not supported in your browser",
