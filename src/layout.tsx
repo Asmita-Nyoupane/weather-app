@@ -13,7 +13,7 @@ const Layout = () => {
                 <Outlet />
             </main>
             <footer className="border-t flex justify-center items-center py-10   backdrop-blur-md supports-[backdrop-filter]: bg-background/50">
-                Made by Asmita
+                <p>&copy; {new Date().getFullYear()} Masuam. All rights reserved.</p>
             </footer>
         </div>
     )
