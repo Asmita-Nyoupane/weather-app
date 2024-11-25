@@ -10,3 +10,4 @@ export const API_CONFIG = {
     },
 
 }
+console.log("🚀 ~ export  API_CONFIG.import.meta.env.VITE_API_KEY,:", import.meta.env.VITE_API_KEY,)
