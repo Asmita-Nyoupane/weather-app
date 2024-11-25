@@ -14,7 +14,7 @@ export function WeatherErrorCard({ title, errorMessage, icon, enableLocation, bt
     return (
         <div className=" flex justify-center items-center h-screen">
 
-            <Card className="border  p-6 rounded-md shadow-md flex flex-col    gap-3 min-w-md max-w-3xl mx-auto">
+            <Card className="border  p-6 rounded-md shadow-md flex flex-col    gap-3 w-[500px] min-w-md max-w-3xl mx-auto">
 
                 <div className="flex items-center gap-2">
                     {icon}
