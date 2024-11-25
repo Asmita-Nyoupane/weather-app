@@ -24,17 +24,17 @@ const WeatherPage = () => {
             return;
         }
 
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                // const { latitude, longitude } = position.coords;
-                // You can call your getLocation function here if needed
-                getLocation();
-            },
-            (error) => {
-                console.error("Error fetching location:", error.message);
-                alert("Please allow location access to use this feature.");
-            }
-        );
+        // navigator.geolocation.getCurrentPosition(
+        //     (position) => {
+        //         // const { latitude, longitude } = position.coords;
+        //         // You can call your getLocation function here if needed
+        //         getLocation();
+        //     },
+        //     (error) => {
+        //         console.error("Error fetching location:", error.message);
+        //         alert("Please allow location access to use this feature.");
+        //     }
+        // );
     };
 
 
